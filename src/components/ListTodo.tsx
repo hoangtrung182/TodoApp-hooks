@@ -1,6 +1,6 @@
 import { useContext, useEffect, useReducer, useState } from 'react'
 import '../assets/style.css';
-import { ADD_TODO, GET_TODOS, REMOVE_TODO, TOGGLE_ALL, TOGGLE_ONE, TodoContext } from '../context/todo';
+import { ADD_TODO, DELETE_COMPLETE, GET_TODOS, REMOVE_TODO, TOGGLE_ALL, TOGGLE_ONE, TodoContext } from '../context/todo';
 import axios from 'axios';
 import { useFetch } from '../composables/useFetch';
 
@@ -35,7 +35,7 @@ const ListTodo = () => {
     const array = state.todos.filter((todo: ITodo) => {
       return todo.isComplete === false
     });
-    return array.length
+    return array
   };
 
   const handleSubmit = async (e: any) => {
@@ -98,6 +98,12 @@ const ListTodo = () => {
     dispatch({type: TOGGLE_ALL, payload: newArr})
   }
 
+  const removeCompleted = () => {
+    const newArr = state.todos.filter((todo: ITodo) => {
+      return todo.isComplete !== true
+    });
+    dispatch({type: DELETE_COMPLETE, payload: newArr})
+  }
 
   return (
     <div className="todoapp">
@@ -111,7 +117,7 @@ const ListTodo = () => {
         </form>
       </header>
       <section className="main">
-        <input type="checkbox" id="toggle-all" checked={remaining() === 0} onChange={toggleAll} className="toggle-all" />
+        <input type="checkbox" id="toggle-all" checked={remaining().length === 0} onChange={toggleAll} className="toggle-all" />
         <label htmlFor="toggle-all">Mark all as complete</label>
         <ul className='todo-list'>
           {
@@ -128,7 +134,26 @@ const ListTodo = () => {
         </ul>
       </section>
       <footer className="footer">
-        <span></span>
+        <span className='todo-count'>
+          <strong>{ remaining().length}</strong>
+          <span>{remaining().length <= 1 ? ' item' : ' items'}</span>
+        </span>
+        <ul className='filters'>
+          <li>
+            <a href="#/all">All</a>
+          </li>
+          <li>
+            <a href="#/active">Active</a>
+          </li>
+          <li>
+            <a href="#/completed">Completed</a>
+          </li>
+        </ul>
+        {
+          state.todos.length > remaining().length && (
+            <button className="clear-completed" onClick={removeCompleted}>Clear complete</button>
+          )
+        }
       </footer>
     </div>
   )

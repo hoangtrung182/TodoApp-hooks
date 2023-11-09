@@ -12,7 +12,7 @@ export const ADD_TODO = 'add_todo';
 export const REMOVE_TODO = 'remove_todo';
 export const TOGGLE_ALL = 'toggle_all';
 export const TOGGLE_ONE = 'toggle_one';
-
+export const DELETE_COMPLETE = 'delete_complete';
 
 const reducer = (state: any, action: any) => {
     switch(action.type) {
@@ -37,6 +37,11 @@ const reducer = (state: any, action: any) => {
                 todos: action.payload
             }
         case TOGGLE_ONE: 
+            return {
+                ...state,
+                todos: action.payload
+            }
+        case DELETE_COMPLETE:
             return {
                 ...state,
                 todos: action.payload
