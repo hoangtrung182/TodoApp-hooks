@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Go sleep",
+      "isComplete": true
+    },
+    {
+      "id": 3,
+      "title": "Eating dinner",
+      "isComplete": false
+    },
+    {
+      "id": 1699501162295,
+      "title": "Hang out with my girl",
+      "isComplete": true
+    },
+    {
+      "id": 1699502143944,
+      "title": "See sunny",
+      "isComplete": true
+    }
+  ]
+}
