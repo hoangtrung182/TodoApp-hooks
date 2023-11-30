@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+    <style>
+      .hover-element::before {
+        content: "Usersss"; /* Nội dung của pseudo-element, không có gì */
+        position: absolute;
+        top: 0px;
+        left: 50px;
+        background-color: rgba(0, 0, 0, 0.7); /* Màu nền của tag tên */
+        color: white; /* Màu chữ của tag tên */
+        padding: 5px; /* Khoảng cách giữa tag và phần tử */
+        border-radius: 5px; /* Bo tròn góc */
+        opacity: 0; /* Ẩn ban đầu */
+        transition: opacity 0.3s ease; /* Hiệu ứng transition */
+      }
+
+      .hover-element:hover::before {
+        opacity: 1; /* Hiển thị khi hover */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hover-element">
+      <!-- Nội dung phần tử -->
+      <button>User</button>
+    </div>
+  </body>
+</html>

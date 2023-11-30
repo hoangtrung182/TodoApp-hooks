@@ -6,19 +6,79 @@
       "isComplete": false
     },
     {
-      "id": 3,
-      "title": "Eating dinner",
+      "id": 1700786460172,
+      "title": "Sunning todayyy eewwww",
       "isComplete": true
     },
     {
-      "id": 1699501162295,
-      "title": "Hang out with my girl",
+      "id": 1700790763236,
+      "title": "Today",
       "isComplete": true
+    }
+  ],
+  "products": [
+    {
+      "name": "String",
+      "price": "100",
+      "quantity": "40",
+      "category": "Drinks",
+      "id": 1
     },
     {
-      "id": 1699502143944,
-      "title": "See sunny",
-      "isComplete": true
+      "name": "sd",
+      "price": 10,
+      "quantity": 2,
+      "category": "Electronics",
+      "id": 2
+    }
+  ],
+  "category": [
+    {
+      "id": 2,
+      "name": "Electronics"
+    },
+    {
+      "name": "Foods",
+      "id": 3
+    },
+    {
+      "name": "Drinks",
+      "id": 4
+    }
+  ],
+  "users": [
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$Ku3DwpXQ97k.H6oAT3iZy.briaEI8nz6jFs0GxYoj3hfaQkX5iNju",
+      "username": "Hoang Trung",
+      "permission": [
+        ""
+      ],
+      "status": "active",
+      "roles": "admin",
+      "id": 1
+    },
+    {
+      "email": "ronaldoisbestt@gmail.com",
+      "password": "$2a$10$EjJwphWh8IfPV1dCy1D0o.z57iIw6O9wqLcYRjrhsOeLORc.QWW3i",
+      "id": 2,
+      "status": "active",
+      "roles": "admin"
+    },
+    {
+      "email": "anhtrung@gmail.com",
+      "password": "$2a$10$q6oIrxoxFD/lxOitk8O7e.OEMQEJ.WJrd.h7H2jdamPpmSF2hNRWG",
+      "id": 3
+    },
+    {
+      "email": "admin11@gmail.com",
+      "password": "$2a$10$n.22eHHnrurVrjZVSp64G.9i/n9uAiq3s01NaOwIRiosDdCuZQ8u6",
+      "id": 4
+    },
+    {
+      "email": "anhtrung10@gmail.com",
+      "password": "$2a$10$paFtmn1J4uLAfiUsgUdrU.5ANjcN0xT6jk/y8X5NCGlFGwFBnmOrq",
+      "id": 5
     }
   ]
 }
