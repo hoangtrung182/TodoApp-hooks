@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
-import Header from "../components/Header";
+import Navbar from "../components/Navbar";
 
 const BaseLayout = () => {
   return (
-    <div>
+    <div className="w-full h-full overflow-hidden font-custom">
       <header>
-        <Header />
+        <Navbar />
       </header>
-      <main>
+      <main className="relative w-auto p-[10px] box-border bg-gray-300">
         <Outlet />
       </main>
     </div>

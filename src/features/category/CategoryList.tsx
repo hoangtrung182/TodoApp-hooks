@@ -1,21 +1,19 @@
-import React from "react";
 import { deleteCategory, getCategories } from "../../services/category";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { style } from "../../pages/manager/product/AdProductPage";
-import Button from "../../components/ui/Button";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { ICategory } from "../../common/types";
 import CategoryItem from "./CategoryItem";
 
 const CategoryList = () => {
-  const { isLoading, data: categoies } = useQuery({
+  const { isLoading, data } = useQuery({
     queryKey: ["CATEGORY_KEY"],
-    queryFn: () => getCategories("/category"),
+    queryFn: () => getCategories("category"),
   });
 
   const queryClient = useQueryClient();
   const deleteCategoryMutation = useMutation({
-    mutationFn: (id: number) => deleteCategory("/category", id),
+    mutationFn: (id: number) => deleteCategory("category", id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["CATEGORY_KEY"] });
     },
@@ -32,6 +30,10 @@ const CategoryList = () => {
     });
   };
 
+  if (isLoading) {
+    return <div className="">Loading...</div>;
+  }
+
   return (
     <div>
       <table className="min-w-full divide-y divide-gray-200 mt-10 relative">
@@ -47,14 +49,16 @@ const CategoryList = () => {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {categoies?.map((category: ICategory, index: any) => (
-            <CategoryItem
-              key={index}
-              category={category}
-              index={index}
-              handleDelete={handleDelete}
-            />
-          ))}
+          {data?.map((category: ICategory, index: number) => {
+            return (
+              <CategoryItem
+                key={index}
+                category={category}
+                index={index}
+                handleDelete={handleDelete}
+              />
+            );
+          })}
         </tbody>
       </table>
     </div>

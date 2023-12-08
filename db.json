@@ -18,32 +18,207 @@
   ],
   "products": [
     {
-      "name": "String",
-      "price": "100",
-      "quantity": "40",
+      "id": 1,
+      "name": "Red bull",
+      "price": 500,
+      "quantity": 120,
       "category": "Drinks",
-      "id": 1
+      "image": "https://picsum.photos/250/200"
     },
     {
-      "name": "sd",
+      "id": 2,
+      "name": "Coca Cola",
+      "price": 400,
+      "quantity": 10,
+      "category": "Drinks",
+      "image": "https://picsum.photos/250/200"
+    },
+    {
+      "id": 3,
+      "name": "Sting",
+      "price": 50,
+      "quantity": 10,
+      "category": "Drinks",
+      "image": "https://picsum.photos/250/200"
+    },
+    {
+      "id": 4,
+      "name": "Bim bim",
       "price": 10,
-      "quantity": 2,
+      "quantity": 12,
+      "category": "Food",
+      "image": "https://picsum.photos/250/200"
+    },
+    {
+      "id": 5,
+      "name": "Noodles",
+      "price": 100,
+      "quantity": 50,
+      "category": "Food",
+      "image": "https://picsum.photos/250/200"
+    },
+    {
+      "id": 6,
+      "name": "Banh My",
+      "price": 340,
+      "quantity": 10,
+      "category": "Food",
+      "image": "https://picsum.photos/250/200"
+    },
+    {
+      "id": 7,
+      "name": "May giat",
+      "price": 310,
+      "quantity": 15,
       "category": "Electronics",
-      "id": 2
+      "image": "https://picsum.photos/250/200"
+    },
+    {
+      "id": 8,
+      "name": "Bep tu",
+      "price": 300,
+      "quantity": 10,
+      "category": "Electronics",
+      "image": "https://picsum.photos/250/200"
+    },
+    {
+      "id": 9,
+      "name": "Tu lanh",
+      "price": 300,
+      "quantity": 10,
+      "category": "Electronics",
+      "image": "https://picsum.photos/250/200"
+    },
+    {
+      "id": 10,
+      "name": "Ao Bo",
+      "price": 300,
+      "quantity": 10,
+      "category": "Clothes",
+      "image": "https://picsum.photos/250/200"
+    },
+    {
+      "id": 11,
+      "name": "Áo sơ mi",
+      "price": 1000,
+      "quantity": 40,
+      "category": "Clothes",
+      "image": "https://picsum.photos/250/200",
+      "description": "Tuy tai nghe F10 khá nhỏ gọn hơn những dòng tai nghe chụp tai phổ thông khác nhưng chúng có âm thanh khá rõ, bass mạnh  giúp bạn có thể bắt trọn từng khoảng khắc âm nhạc nhất.Một trong những điểm nổi bật của tai nghe F10 là có thể xếp gọn, bạn không mất nhiều diện tích khi chứa trong balo, túi xách...Với thiết kế dây nghe dài 1,2m dễ dàng kết nối với điện thoại, laptop ở 1 khoảng cách nhất định."
+    },
+    {
+      "id": 12,
+      "name": "Quan bo",
+      "price": 1400,
+      "quantity": 12,
+      "category": "Clothes",
+      "image": "https://picsum.photos/250/200"
+    },
+    {
+      "id": 13,
+      "name": "Samsung",
+      "price": 300,
+      "quantity": 10,
+      "category": "Cell phone",
+      "image": "https://picsum.photos/250/200"
+    },
+    {
+      "id": 14,
+      "name": "Iphone",
+      "price": 300,
+      "quantity": 10,
+      "category": "Cell phone",
+      "image": "https://picsum.photos/250/200"
+    },
+    {
+      "id": 15,
+      "name": "Oppo",
+      "price": 300,
+      "quantity": 10,
+      "category": "Cell phone",
+      "image": "https://picsum.photos/250/200"
+    },
+    {
+      "id": 16,
+      "name": "Adidas shoes",
+      "price": 300,
+      "quantity": 10,
+      "category": "Shoes",
+      "image": "https://picsum.photos/250/200"
+    },
+    {
+      "id": 17,
+      "name": "Nike Shoes",
+      "price": 300,
+      "quantity": 10,
+      "category": "Shoes",
+      "image": "https://picsum.photos/250/200"
+    },
+    {
+      "id": 18,
+      "name": "Convert shoes",
+      "price": 300,
+      "quantity": 10,
+      "category": "Shoes",
+      "image": "https://picsum.photos/250/200"
+    },
+    {
+      "id": 19,
+      "name": "Red mirrors",
+      "price": 300,
+      "quantity": 10,
+      "category": "Mirrors",
+      "image": "https://picsum.photos/250/200"
+    },
+    {
+      "id": 20,
+      "name": "Dell",
+      "price": 300,
+      "quantity": 10,
+      "category": "Laptop",
+      "image": "https://picsum.photos/250/200"
+    },
+    {
+      "id": 21,
+      "name": "MacBook",
+      "price": 300,
+      "quantity": 10,
+      "category": "Laptop",
+      "image": "https://picsum.photos/250/200"
     }
   ],
   "category": [
     {
-      "id": 2,
-      "name": "Electronics"
-    },
-    {
-      "name": "Foods",
-      "id": 3
+      "id": 1,
+      "name": "Food"
     },
     {
       "name": "Drinks",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "name": "Clothes"
+    },
+    {
+      "name": "Electronics",
       "id": 4
+    },
+    {
+      "name": "Shoes",
+      "id": 5
+    },
+    {
+      "id": 6,
+      "name": "Mirrors"
+    },
+    {
+      "name": "Cell Phone",
+      "id": 7
+    },
+    {
+      "name": "Laptop",
+      "id": 8
     }
   ],
   "users": [
@@ -52,33 +227,21 @@
       "password": "$2a$10$Ku3DwpXQ97k.H6oAT3iZy.briaEI8nz6jFs0GxYoj3hfaQkX5iNju",
       "username": "Hoang Trung",
       "permission": [
-        ""
+        "users"
       ],
       "status": "active",
       "roles": "admin",
       "id": 1
     },
     {
-      "email": "ronaldoisbestt@gmail.com",
-      "password": "$2a$10$EjJwphWh8IfPV1dCy1D0o.z57iIw6O9wqLcYRjrhsOeLORc.QWW3i",
-      "id": 2,
-      "status": "active",
-      "roles": "admin"
-    },
-    {
       "email": "anhtrung@gmail.com",
       "password": "$2a$10$q6oIrxoxFD/lxOitk8O7e.OEMQEJ.WJrd.h7H2jdamPpmSF2hNRWG",
-      "id": 3
-    },
-    {
-      "email": "admin11@gmail.com",
-      "password": "$2a$10$n.22eHHnrurVrjZVSp64G.9i/n9uAiq3s01NaOwIRiosDdCuZQ8u6",
-      "id": 4
-    },
-    {
-      "email": "anhtrung10@gmail.com",
-      "password": "$2a$10$paFtmn1J4uLAfiUsgUdrU.5ANjcN0xT6jk/y8X5NCGlFGwFBnmOrq",
-      "id": 5
+      "username": "Mode",
+      "permission": [
+        ""
+      ],
+      "id": 3,
+      "roles": "user"
     }
   ]
 }

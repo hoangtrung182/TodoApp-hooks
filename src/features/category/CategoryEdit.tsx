@@ -1,39 +1,56 @@
+import React, { useEffect, useState } from "react";
+import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useParams } from "react-router-dom";
+import { getCategory, updateCategory } from "../../services/category";
+import { ToastContainer, toast } from "react-toastify";
 import Button from "../../components/ui/Button";
+import { useNavigate } from "react-router-dom";
 import { ICategory, IProduct } from "../../common/types";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { useMutation, useQueryClient } from "react-query";
-import { ToastContainer, toast } from "react-toastify";
-import { addCategory } from "../../services/category";
 import { schemaCategory } from "../../common/schema";
-import { useState } from "react";
-import Error from "../../components/Error";
 import { inputStyle } from "../../common/style";
+import Error from "../../components/Error";
 
-const CategoryForm = () => {
+const CategoryEdit = () => {
+  const { id } = useParams();
   const [error, setError] = useState<string>("");
-  const { handleSubmit, register } = useForm<ICategory>();
   const navigate = useNavigate();
+
+  const { handleSubmit, register, setValue } = useForm<ICategory>();
   const queryClient = useQueryClient();
 
-  const createProduct = useMutation({
-    mutationFn: (data: ICategory) => addCategory("/category", data),
+  const { data } = useQuery({
+    queryKey: ["CATEGORY_KEY"],
+    queryFn: () => getCategory("category", id!),
+  });
+
+  const editProduct = useMutation({
+    mutationFn: (data: ICategory) => updateCategory("category", data),
     onSuccess: () => {
       queryClient.invalidateQueries(["CATEGORY_KEY"]);
-      toast.success("Added successfully", {
-        autoClose: 4000,
+      toast.success("Edited successfully", {
+        autoClose: 3000,
         theme: "colored",
       });
     },
   });
 
-  const onSubmit = (data: ICategory) => {
-    const { value, error } = schemaCategory.validate(data);
+  //   console.log(data);
+
+  useEffect(() => {
+    if (data) {
+      setValue("name", data.name);
+    }
+  }, [data]);
+
+  const onSubmit = (values: ICategory) => {
+    const { value, error } = schemaCategory.validate(values);
     if (error) {
       setError(error.message);
       return;
     }
-    createProduct.mutate(value);
+    const newData = { id: +id!, ...value };
+    editProduct.mutate(newData);
     navigate("/admin/category");
   };
 
@@ -56,11 +73,11 @@ const CategoryForm = () => {
         </div>
         <div className="">
           <Button name="Save" />
-          <ToastContainer />
         </div>
+        <ToastContainer />
       </form>
     </div>
   );
 };
 
-export default CategoryForm;
+export default CategoryEdit;

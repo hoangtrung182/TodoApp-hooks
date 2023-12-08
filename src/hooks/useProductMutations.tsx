@@ -1,6 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "react-query";
-import { addProduct, deleteProduct } from "../services/product";
+import { addProduct, deleteProduct, updateProduct } from "../services/product";
 import { IProduct } from "../common/types";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { schemaProduct } from "../common/schema";
@@ -11,10 +11,12 @@ type formInputType = {
   price: number;
   quantity: number;
   category: string;
+  image?: string;
+  description?: string;
 };
 
 type useProductMutationProps = {
-  action: "ADD" | "DELETE";
+  action: "ADD" | "DELETE" | "EDIT";
   defaultValues?: IProduct;
   onSuccess?: () => void;
 };
@@ -29,9 +31,11 @@ export const useProductMutations = ({
     mutationFn: async (product: IProduct) => {
       switch (action) {
         case "ADD":
-          return await addProduct("/products", product);
+          return await addProduct("products", product);
         case "DELETE":
-          return await deleteProduct("/products/", product.id!);
+          return await deleteProduct("products/", product.id!);
+        case "EDIT":
+          return await updateProduct("products/", product);
         default:
           return null;
       }
@@ -46,6 +50,7 @@ export const useProductMutations = ({
     resolver: joiResolver(schemaProduct),
     defaultValues,
   });
+
   const onSubmit: SubmitHandler<formInputType> = (values) => {
     mutate(values);
   };
@@ -53,6 +58,7 @@ export const useProductMutations = ({
   const onRemove = (product: IProduct) => {
     mutate(product);
   };
+
   return {
     form,
     onSubmit,

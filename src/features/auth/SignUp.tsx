@@ -1,4 +1,3 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import { ToastContainer } from "react-toastify";
 import { IUser } from "../../common/types";

@@ -52,6 +52,7 @@ const ProductList = () => {
         <tbody className="bg-white divide-y divide-gray-200">
           {products?.map((product: IProduct, index: any) => (
             <ProductItem
+              key={index}
               product={product}
               index={index}
               handleDelete={handleDelete}

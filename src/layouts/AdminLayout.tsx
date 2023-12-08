@@ -8,7 +8,7 @@ import Tags from "../components/Tags";
 const AdminLayout = () => {
   const { isCollapse } = useContext(stateContext);
   return (
-    <div className="w-full h-full overflow-hidden font-custom">
+    <div className="w-full font-custom">
       <Header />
       <AdSidebar />
       <main
@@ -16,10 +16,10 @@ const AdminLayout = () => {
           isCollapse
             ? "left-[65px] transition-width ease-in-out duration-500"
             : "left-[250px] transition-width ease-in-out duration-500"
-        } top-[70px] bottom-0 pb-7 bg-slate-200`}
+        } top-[70px] bottom-0 pb-7 bg-blue-gray-100`}
       >
         <Tags />
-        <div className="w-auto h-full p-[10px] overflow-y-hidden box-border ">
+        <div className="relative w-auto p-[10px] box-border ">
           <Outlet />
         </div>
       </main>

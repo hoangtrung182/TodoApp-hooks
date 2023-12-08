@@ -12,7 +12,7 @@ export const getCategories = async (path: string) => {
   }
 };
 
-export const getCategory = async (path: string, id: number) => {
+export const getCategory = async (path: string, id: string) => {
   try {
     const res = await instance.get(`${path}/${id}`);
     return res.data || {};
@@ -23,6 +23,14 @@ export const getCategory = async (path: string, id: number) => {
 export const addCategory = async (path: string, category: ICategory) => {
   try {
     await instance.post(path, category);
+  } catch (error) {
+    console.log("FETCH_PRODUCTS_ERRO", error);
+  }
+};
+
+export const updateCategory = async (path: string, category: ICategory) => {
+  try {
+    await instance.patch(`${path}/${category.id}`, category);
   } catch (error) {
     console.log("FETCH_PRODUCTS_ERRO", error);
   }
