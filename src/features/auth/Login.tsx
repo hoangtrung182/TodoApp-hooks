@@ -2,10 +2,11 @@ import { ToastContainer, toast } from "react-toastify";
 import { IUser } from "../../common/types";
 import { useAuthMutations } from "../../hooks/useAuthMutations";
 import backgroundImage from "../../assets/img/cover-img.jpg";
-import Joi from "joi";
 import Error from "../../components/Error";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const {
     form: {
       handleSubmit,
@@ -18,8 +19,10 @@ const Login = () => {
     onSuccess: () => {
       toast.success("Login successfull", {
         autoClose: 3000,
+        position: "top-center",
         theme: "colored",
       });
+      // setTimeout(() => navigate("/admin"));
     },
   });
 
@@ -42,8 +45,8 @@ const Login = () => {
         </h2>
         <form className="p-10 w-full" onSubmit={handleSubmit(onHandleSubmit)}>
           <div
-            className={`flex flex-wrap items-center flex-1 leading-[32px] relative min-w-0 mb-5 ${
-              errors.email && "border border-red-600 mb-1"
+            className={`flex flex-wrap items-center flex-1 leading-[32px] relative min-w-0 ${
+              errors.email ? "border border-red-600 mb-1" : "mb-5"
             }`}
           >
             <div className="inline-flex w-full items-stretch">
@@ -58,15 +61,15 @@ const Login = () => {
                   className={`w-full grow text-gray-500 text-sm p-0 mb-[2px] box-border outline-none `}
                   placeholder="username"
                   {...register("email")}
-                  // value="admin@gmail.com"
+                  value="admin@gmail.com"
                 />
               </div>
             </div>
           </div>
           {errors.email && <Error error={errors.email.message!} />}
           <div
-            className={`flex flex-wrap items-center flex-1 leading-[32px] relative min-w-0 mb-5 ${
-              errors.email && "border border-red-600 mb-1"
+            className={`flex flex-wrap items-center flex-1 leading-[32px] relative min-w-0 ${
+              errors.email ? "border border-red-600 mb-1" : "mb-5"
             }`}
           >
             <div className="inline-flex w-full items-stretch">
@@ -81,7 +84,7 @@ const Login = () => {
                   className="w-full grow text-gray-500 text-sm p-0 mb-[2px] box-border outline-none"
                   placeholder="password"
                   {...register("password")}
-                  // value="anhtrung"
+                  value="anhtrung"
                 />
               </div>
             </div>
@@ -98,7 +101,7 @@ const Login = () => {
             </button>
           </div>
           <p className="text-sm text-white leading-7">
-            Tips: You should not type ...{" "}
+            Tips: You should type exactly one of the following
           </p>
         </form>
         <ToastContainer />

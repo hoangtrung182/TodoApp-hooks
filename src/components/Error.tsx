@@ -1,5 +1,3 @@
-import React from "react";
-
 interface Props {
   error: string;
   size?: string;
@@ -7,9 +5,7 @@ interface Props {
 
 const Error = ({ error, size }: Props) => {
   return (
-    <span
-      className={`text-red-600 w-full text-md px-2 py-[2px] text-[${size}] text-sm`}
-    >
+    <span className={`text-red-600 w-full text-md px-2 py-[2px] text-sm`}>
       {error}
     </span>
   );

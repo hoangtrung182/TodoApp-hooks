@@ -5,10 +5,15 @@ import { signIn, signUp } from "../services/auth";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { useLocalStorage } from "./useStotage";
 import { schemaAuth } from "../common/schema";
+import { useNavigate } from "react-router-dom";
 
 type formInputType = {
   email: string;
   password: string;
+  username?: string;
+  roles?: string;
+  permission?: Array<string>;
+  status?: string;
 };
 
 type useProductMutationProps = {

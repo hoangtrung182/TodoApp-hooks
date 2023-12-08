@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 import BaseLayout from "../layouts/BaseLayout";
 import HomePage from "../pages/HomePage";
 import ProductPage from "../pages/ProductPage";
@@ -16,6 +21,10 @@ import ProductForm from "../features/product/ProductForm";
 import Login from "../features/auth/Login";
 import SignUp from "../features/auth/SignUp";
 import AuthLayout from "../layouts/AuthLayout";
+import CategoryEdit from "../features/category/CategoryEdit";
+import ProductWithId from "../components/ProductWithId";
+import ProductDetail from "../pages/ProductDetail";
+import CartPage from "../pages/CartPage";
 
 const Routers = () => {
   const [user] = useLocalStorage("user", {});
@@ -24,9 +33,20 @@ const Routers = () => {
     <div>
       <Router>
         <Routes>
-          <Route path="/" element={<BaseLayout />}>
+          <Route
+            path="/"
+            element={
+              <PrivateRoute isAllowed={!!user && Object.keys(user).length > 0}>
+                <BaseLayout />
+              </PrivateRoute>
+            }
+          >
             <Route index element={<HomePage />} />
-            <Route path="products" element={<ProductPage />} />
+            <Route path="products" element={<ProductPage />}>
+              <Route path=":id" element={<ProductWithId />} />
+            </Route>
+            <Route path=":id" element={<ProductDetail />} />
+            <Route path="cart" element={<CartPage />} />
           </Route>
           <Route
             path="/admin"
@@ -35,7 +55,7 @@ const Routers = () => {
                 isAllowed={
                   !!user &&
                   Object.keys(user).length > 0 &&
-                  user.roles?.includes("admin")
+                  user?.roles?.includes("admin")
                 }
               >
                 <AdminLayout />
@@ -51,6 +71,7 @@ const Routers = () => {
             <Route path="category" element={<CategoryPage />}>
               <Route index element={<CategoryList />} />
               <Route path="add" element={<CategoryForm />} />
+              <Route path=":id/edit" element={<CategoryEdit />} />
             </Route>
             <Route
               path="users"
@@ -69,7 +90,9 @@ const Routers = () => {
             element={
               <PrivateRoute
                 isAllowed={!user || Object.keys(user).length === 0}
-                redirectPath="/admin/dashboard"
+                redirectPath={
+                  user?.roles?.includes("admin") ? "/admin/dashboard" : "/"
+                }
               >
                 <AuthLayout />
               </PrivateRoute>

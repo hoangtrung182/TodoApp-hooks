@@ -4,14 +4,6 @@ export interface ITodo {
   isComplete: boolean;
 }
 
-export interface IProduct {
-  id?: number;
-  name: string;
-  price: number;
-  quantity: number;
-  category: string;
-}
-
 export interface ICategory {
   id?: number;
   name: string;
@@ -20,8 +12,19 @@ export interface ICategory {
 export interface IUser {
   id?: number;
   email: string;
-  // username: string;
   password: string;
-  // status?: string;
-  // role?: string;
+  username?: string;
+  roles?: string;
+  permission?: Array<string>;
+  status?: string;
+}
+
+export interface IProduct {
+  id?: number;
+  name: string;
+  price: number;
+  quantity: number;
+  category: string;
+  image?: string;
+  description?: string;
 }

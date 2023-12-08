@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { stateContext } from "../context/header-sidebar";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "../index.css";
+import { PopoverWithDescription } from "./ui/Popover";
 
 const AdSidebar = () => {
-  const { isCollapse } = useContext(stateContext);
-
+  const { isCollapse, handleCollapse } = useContext(stateContext);
   const listItems = [
     {
       id: 1,
@@ -46,22 +45,26 @@ const AdSidebar = () => {
     },
   ];
 
+  useEffect(() => {
+    setTimeout(() => {
+      handleCollapse();
+    }, 100);
+  }, []);
+
   return (
     <div className="block absolute left-0 top-[70px] bottom-0 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-800 scrollbar-track-gray-200">
       <ul
-        className={`h-full space-y-3 bg-gray-600 text-white ${
+        className={`h-full space-y-3 bg-blue-gray-600 text-white ${
           isCollapse
-            ? "w-[64px] transition-width ease-in-out duration-500"
+            ? "w-[64px] transition-width ease-in-out duration-500 delay-200"
             : "w-[250px] transition-width ease-in-out duration-500"
         }`}
       >
         {listItems.map((item) => (
-          <li key={item.id} className="relative  hover:bg-sky-700">
-            <Link to={item.url} className="block p-4 mx-3 w-full rounded-md">
-              <i className={`${item.icon}`}></i>
-              {!isCollapse && (
-                <span className=" ml-4 w-full">{item.title}</span>
-              )}
+          <li key={item.id} className="relative hover:bg-sky-700">
+            <Link to={item.url} className="block  p-4 mx-3 w-full rounded-md">
+              <PopoverWithDescription icon={item.icon} name={item.title} />
+              {!isCollapse && <span className="ml-4 w-full">{item.title}</span>}
             </Link>
           </li>
         ))}

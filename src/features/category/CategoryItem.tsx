@@ -3,6 +3,7 @@ import { ICategory } from "../../common/types";
 import { style } from "../../pages/manager/product/AdProductPage";
 import Button from "../../components/ui/Button";
 import { ToastContainer } from "react-toastify";
+import { Link } from "react-router-dom";
 
 interface Props {
   category: ICategory;
@@ -18,8 +19,9 @@ const CategoryItem = ({ category, index, handleDelete }: Props) => {
       <td>
         <div className="" onClick={() => handleDelete(category.id!)}>
           <Button name="Remove" />
+          <ToastContainer />
         </div>
-        <ToastContainer />
+        {/* <Link to={`/admin/category/${category.id}/edit`}>Edit</Link> */}
       </td>
     </tr>
   );

@@ -9,6 +9,8 @@ export const schemaProduct = Joi.object({
   price: Joi.number().min(1).required(),
   quantity: Joi.number().min(1).required(),
   category: Joi.string().required(),
+  image: Joi.string().required(),
+  description: Joi.string().required(),
 });
 
 export const schemaAuth = Joi.object({

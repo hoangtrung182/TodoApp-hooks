@@ -1,12 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
 import Button from "../../../components/ui/Button";
-import { IProduct } from "../../../common/types";
-import useProductQuery from "../../../hooks/useProductQuery";
-import { useState } from "react";
-import ProductForm from "../../../features/product/ProductForm";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useProductMutations } from "../../../hooks/useProductMutations";
 
 export const style = {
   thClassName:
